@@ -23,3 +23,8 @@ Since it doesn't work yet, there are a lot of known issues. Primarily:
 A couple plans are in place for next-steps (after the thing actually runs):
 * Converting the project to Chrome and Edge extensions so that an HTML file isn't needed to kick off the program.
 * Eventually finding out how many searches the user has done already, and only doing the remaining number needed to maximize points
+
+## Credits
+This project uses a number of online libraries. Most notably, random word
+generation comes from setgetgo's random word api and can be found at:
+http://www.setgetgo.com/randomword/

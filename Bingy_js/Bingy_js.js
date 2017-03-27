@@ -48,7 +48,7 @@ function helloWorld() {
 //	setTimeout(function() {alert("http://www.nytimes.com");}, 3000);
 	
 	
-	wordArrayTEST();
+	wordGetter();
       
     
 
@@ -70,9 +70,9 @@ function wordArrayBuilder() {
 function wordArrayTEST() {
 	var arrayManager = new wordArrayBuilder();
 	arrayManager.addItem("yes");
-	alert("system returned " + arrayManager.getItem(0) + " at index 0 (should be 'yes')");
-	alert("system removed " + arrayManager.removeItem(0) + " from index 0 (should be 'yes')");
-	alert("array is " + arrayManager.getArray());
+//	alert("system returned " + arrayManager.getItem(0) + " at index 0 (should be 'yes')");
+//	alert("system removed " + arrayManager.removeItem(0) + " from index 0 (should be 'yes')");
+//	alert("array is " + arrayManager.getArray());
 }
 
 
@@ -83,13 +83,21 @@ function wordGetter() {
 		type: "GET",
 		url: requestStr,
 		dataType: "jsonp",
-		jsonpCallback: 'RandomWordComplete'
+		jsonpCallback: 'windowChanger'
 	});
 }
 
- function WordArrayBuilder(data) {
-        alert(data.Word);
- }
+function makeWords() {
+	var arrayManager = new wordArrayBuilder();
+	
+	for(i = 0; i <= 30; i++) {
+		wordGetter(arrayManager.addItem(data.Word));
+	}
+	
+	console.log(arrayManager.getArray);
+}
+
+
 
 /**
 * Creates a new, blank window which will be changed later in windowChanger()
@@ -98,7 +106,7 @@ function windowCreator() {
 	this.win = window.open("", "Bingy Active Window");
 }
 
-function windowChanger() {
+function windowChanger(jsonpData) {
 	/**
 	* import dictionary
 	* create array of 30 words
@@ -107,6 +115,7 @@ function windowChanger() {
 	* change window to that var
 	*/
 	
-	var windowManager = new windowCreator();
+	var myWindow = window.open("http://www.bing.com/search?q=" + jsonpData.Word, "MyWindow");
+//	myWindow.location.assign("http://www.bing.com/search?q=" + jsonpData.Word);
 	
 }
